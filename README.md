@@ -1,5 +1,4 @@
 # Creating a Rest API with Infrastructure as Code (Tofu) and Lambda + Typescript
-
 ## Deploying an API with Typescript in minutes instead of days
 
 Deploying to production is becoming easier every day. Best practices and tools are available to us to create software that eventually contributes to automating tedious tasks, creating new businesses and startups, and ultimately generating value for society 🌎.
@@ -39,7 +38,7 @@ The purpose of this post is to showcase an essential how to create an API with T
 
 The following files are typical in a Tofu project, and this is the convention we are using in this project.
 
-- *main.tf* - Entry point for Terraform
+- *main.tf* - Entrypoint for Tofu
 - *variables.tf* - Input variables
 - *terraform.tfvars* - Variable definition file
 - *providers.tf* - Provider declarations
@@ -126,7 +125,7 @@ layer.zip
 
 **Lambda Resources:** Configures the Lambda module to retrieve the source code from a bucket also created by Tofu, and we define `lambdaHandler` as the method that will receive and process the API event.
 
-**Modules** are the key ingredient for writing reusable, maintainable code. When planning to deploy AWS infrastructure, it's better to leverage this functionality and be aware of the common gotchas to avoid conflicts with other Terraform configurations.
+**Modules** are the key ingredient for writing reusable, maintainable code. When planning to deploy AWS infrastructure, it's better to leverage this functionality and be aware of the common gotchas to avoid conflicts with other Tofu configurations.
 
 ****
 
@@ -180,15 +179,15 @@ data "aws_iam_policy_document" "policy" {
 
 ### Tofu Deployment
 
-Deploying the API should be as simple as cloning the code and running a couple of Terraform commands.
+Deploying the API should be as simple as cloning the code and running a couple of Tofu commands.
 
-The `terraform init` command is used to initialize a project in a working directory. This command downloads provider code and configures the backend, where state and other key data are stored.
+The `tofu init` command is used to initialize a project in a working directory. This command downloads provider code and configures the backend, where state and other key data are stored.
 
 ```sh
-terraform init
+tofu init
 ```
 
-The `terraform apply` command is used to apply the changes defined in your infrastructure configuration and create or modify the corresponding resources in your infrastructure provider.
+The `tofu apply` command is used to apply the changes defined in your infrastructure configuration and create or modify the corresponding resources in your infrastructure provider.
 
 **You can use the Node.js runtime to run TypeScript code in AWS Lambda. Because Node.js doesn't run TypeScript code natively, you must first transpile your TypeScript code into JavaScript.**
 
@@ -199,7 +198,7 @@ The `terraform apply` command is used to apply the changes defined in your infra
 Finally, you can retrieve the information from the *Outputs* and make the API call.
 
 ```sh
-http "$(terraform output -raw api_endpoint)"
+http "$(tofu output -raw api_endpoint)"
 ```
 
 ## Conclusion 🤔
