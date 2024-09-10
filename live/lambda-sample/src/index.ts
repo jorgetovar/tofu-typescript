@@ -9,7 +9,7 @@ export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGat
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                message: 'Hello World from Typescript + Terraform!',
+                message: 'Hello World from Typescript + Tofu!',
             }),
         };
     } catch (err) {
