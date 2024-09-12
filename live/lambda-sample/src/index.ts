@@ -1,6 +1,6 @@
-import {APIGatewayProxyEvent, APIGatewayProxyResult} from 'aws-lambda';
+import { APIGatewayProxyEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 
-export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
+export const lambdaHandler = async (event: APIGatewayProxyEvent, context: Context): Promise<APIGatewayProxyResult> => {
     console.log(event.body);
     try {
         return {
@@ -9,7 +9,7 @@ export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGat
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                message: 'Hello World from Typescript + Tofu!',
+                message: 'Hello World from Typescript + Tofu V2!',
             }),
         };
     } catch (err) {

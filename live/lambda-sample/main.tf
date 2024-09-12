@@ -8,7 +8,7 @@ module "function" {
   name = "lambda-sample"
 
   # Point to the dist directory with transpiled JS
-  src_dir = "${path.module}/dist"
+  src_dir = "${path.module}/src/dist"
   runtime = "nodejs20.x"
   handler = "index.lambdaHandler" # index.js, lambdaHandler
 
