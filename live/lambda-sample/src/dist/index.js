@@ -17,13 +17,13 @@ var __copyProps = (to, from, except, desc) => {
 };
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-// src/index.ts
+// index.ts
 var src_exports = {};
 __export(src_exports, {
   lambdaHandler: () => lambdaHandler
 });
 module.exports = __toCommonJS(src_exports);
-var lambdaHandler = async (event) => {
+var lambdaHandler = async (event, context) => {
   console.log(event.body);
   try {
     return {
@@ -32,7 +32,7 @@ var lambdaHandler = async (event) => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        message: "Hello World from Typescript + Terraform!"
+        message: "Hello World from Typescript + Tofu V2!"
       })
     };
   } catch (err) {
